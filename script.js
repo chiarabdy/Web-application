@@ -4,13 +4,14 @@ function newItem(title, bought) {
     // put <input  type= "checkbox">inside li
     var newInput = document.createElement("input");
     newInput.setAttribute('type', 'checkbox');
+    if(bought == true){
+      newInput.setAttribute('checked',true)
+    }
     newLi.append(newInput);
     var newId = title;
-    console.log('hello',title)
-        //document.getElementById("main").value;
     newLi.append(newId);
     var ul = document.getElementById("ul");
-    console.log(ul);
+
     ul.appendChild(newLi);
     // var task = get the innnerHTML of class "main"
     // task.appendChild("newLi")
@@ -26,19 +27,7 @@ fetch('/list', {
             var leng = list.length;
             var lengs = response.body;
             for (var i = 0; i < leng; i++) {
-                console.log("ithe elemeönt", list[i])
-
-                if (lengs.title == list[i].title) {
-                    list[i].bought = (lengs.bought == "true");
-                    console.log("this is bought", list[i].bought)
-
-                }
-
-                /*console.log(list[i].title)
-                if (lengs.title == list[i].title) {
-                    console.log(list[i].bought);
-                    list[i].bought = (lengs.bought == "true");
-                    console.log(list[i].bought);*/
+                console.log("i th element", list[i])
                 newItem(list[i].title, list[i].bought)
                 console.log('these are the title',list[i].title)
             }
